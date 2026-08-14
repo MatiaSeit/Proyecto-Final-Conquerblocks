@@ -1,0 +1,21 @@
+name: Free-tier keep-warm & digest cron
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"  # keep-warm ping
+    - cron: "5 * * * *"     # low-stock digest, once an hour
+  workflow_dispatch: {}      # allows a manual run from the Actions tab
+
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping backend (Render free tier sleeps after 15 min idle)
+        run: curl -sS --max-time 60 "${{ secrets.RENDER_API_URL }}/api/v1/schema/" || true
+
+      - name: Trigger low-stock digest (hourly slot, or manual run)
+        if: github.event.schedule == '5 * * * *' || github.event_name == 'workflow_dispatch'
+        run: |
+          curl -sS --max-time 60 -X POST \
+            -H "X-Cron-Secret: ${{ secrets.CRON_SECRET }}" \
+            "${{ secrets.RENDER_API_URL }}/api/v1/internal/run-low-stock-digest/"
