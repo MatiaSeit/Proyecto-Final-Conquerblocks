@@ -15,7 +15,11 @@ jobs:
 
       - name: Trigger low-stock digest (hourly slot, or manual run)
         if: github.event.schedule == '5 * * * *' || github.event_name == 'workflow_dispatch'
+        # Same tolerance as the ping step above: this is a best-effort free-tier
+        # convenience cron, not a critical job -- a transient failure here
+        # (cold start, brief Render hiccup) shouldn't fail the whole run and
+        # spam a "workflow failed" email every time it happens.
         run: |
           curl -sS --max-time 60 -X POST \
             -H "X-Cron-Secret: ${{ secrets.CRON_SECRET }}" \
-            "${{ secrets.RENDER_API_URL }}/api/v1/internal/run-low-stock-digest/"
+            "${{ secrets.RENDER_API_URL }}/api/v1/internal/run-low-stock-digest/" || true
