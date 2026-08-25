@@ -30,7 +30,7 @@ punta: qué hay, dónde está, quién lo pidió, y a dónde fue.
 >   entorno profesional.
 > - Demostrar autonomía técnica y responsabilidad profesional en el ciclo de desarrollo completo.
 
-**Enlace del proyecto desplegado:** `<URL-FRONTEND>` &middot; **API:** [https://proyecto-final-conquerblocks.onrender.com/api/v1](https://proyecto-final-conquerblocks.onrender.com/api/v1) — ver
+**Enlace del proyecto desplegado:** [https://proyecto-final-conquerblocks-1.onrender.com](https://proyecto-final-conquerblocks-1.onrender.com) &middot; **API:** [https://proyecto-final-conquerblocks.onrender.com/api/v1](https://proyecto-final-conquerblocks.onrender.com/api/v1) — ver
 [Despliegue](#despliegue) para cómo está armado y por qué.
 
 ## Screenshots
