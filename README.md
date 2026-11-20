@@ -316,7 +316,7 @@ docker compose exec backend python manage.py seed_demo
 - API root: `http://localhost:8000/api/v1/`
 - Swagger UI: `http://localhost:8000/api/v1/docs/`
 - Admin: `http://localhost:8000/admin/`
-- Demo users (after `seed_demo`): `command` / `quartermaster` / `dispatcher`, password `RebelYell123!`
+- Demo users (after `seed_demo`): `command` / `quartermaster` / `dispatcher` / `technician`, password `RebelYell123!`
 
 Running the frontend outside Docker during development: `cd frontend && npm install && npm run dev`
 (needs the backend running separately on `:8000`, CORS is already open for `localhost:5173` in `dev.py`).
@@ -512,6 +512,6 @@ usually that the bigger tool would cost more than it'd save.
 - [x] End-to-end test (Playwright) tying frontend, backend and Celery together
 - [x] "Decisiones técnicas" — written rationale for the bigger architectural choices
 - [x] Public deployment (Render + Neon, free tier) — see [Despliegue](#despliegue)
-- [ ] Documento del proyecto (memoria técnica en PDF/Word) para la entrega del PFM
+- [x] Documento del proyecto (memoria técnica en PDF) para la entrega del PFM
 - [ ] Vídeo explicativo (máx. 5 min) para la entrega del PFM
 - [ ] Companion Java/Spring Boot reimplementation of the core domain (separate repo)

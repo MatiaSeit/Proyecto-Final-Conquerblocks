@@ -32,7 +32,10 @@ class Command(BaseCommand):
         User.objects.get_or_create(
             username="dispatcher", defaults={"role": User.Role.DISPATCHER}
         )[0].set_password("RebelYell123!")
-        for u in User.objects.filter(username__in=["quartermaster", "dispatcher"]):
+        User.objects.get_or_create(
+            username="technician", defaults={"role": User.Role.TECHNICIAN}
+        )
+        for u in User.objects.filter(username__in=["quartermaster", "dispatcher", "technician"]):
             u.set_password("RebelYell123!")
             u.save()
 
@@ -108,5 +111,5 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS(f"Dispatched {order.number} to Red Squadron"))
 
         self.stdout.write(self.style.SUCCESS(
-            "\nDemo data ready. Login with: command / quartermaster / dispatcher, password RebelYell123!"
+            "\nDemo data ready. Login with: command / quartermaster / dispatcher / technician, password RebelYell123!"
         ))
